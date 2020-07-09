@@ -37,7 +37,7 @@ services:
       - PRO_PLAN
       - FREE_PLAN_ARCHIVE
       - PRO_PLAN_ARCHIVE
-    # image: "mongo:${TAG}-${STAGE}"
+    image: "mongo:${TAG}-${STAGE}"
     volumes:
       - ${DATA}/mongo:/data/db
     networks:
@@ -87,6 +87,7 @@ services:
   admin:
     build:
       context: ./admin
+    image: "admin:${TAG}-${STAGE}"
     environment:
       - MONGO_NODE_DRIVER_HOST=mongo
       - BACKEND_SERVER
@@ -114,6 +115,7 @@ services:
   account:
     build:
       context: ./account
+    image: "acount:${TAG}-${STAGE}"
     environment:
       - MONGO_NODE_DRIVER_HOST=mongo
       - STRIPE_PUBLISHABLE_KEY
@@ -147,6 +149,7 @@ services:
   frontend:
     build:
       context: ./frontend
+    image: "frontend:${TAG}-${STAGE}"
     environment:
       - MONGO_NODE_DRIVER_HOST=mongo
       - BACKEND_SERVER
