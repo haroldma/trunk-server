@@ -1,5 +1,5 @@
-export MEDIA=/mnt/c/Sources/dump/media
-export DATA=/mnt/c/Sources/dump/data
+export MEDIA=/home/haroldma/dev/dump/media
+export DATA=/home/haroldma/dev/dump/data
 export MAILJET_KEY="FILL IN HERE"
 export MAILJET_SECRET="FILL IN HERE"
 export STAGE=test
