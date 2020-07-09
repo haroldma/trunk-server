@@ -1,12 +1,11 @@
-export MEDIA=/Users/luke/Testing/media
-export DATA=/Users/luke/Testing/data
+export MEDIA=/mnt/c/Sources/dump/media
+export DATA=/mnt/c/Sources/dump/data
 export MAILJET_KEY="FILL IN HERE"
 export MAILJET_SECRET="FILL IN HERE"
 export STAGE=test
 export TAG=1.7
 export DOMAIN_NAME="openmhz.test"
 export PROTOCOL="http://"
-
 export STRIPE_PUBLISHABLE_KEY=""
 export STRIPE_SECRET_KEY="FILL IN HERE"
 export BACKEND_SERVER="${PROTOCOL}api.${DOMAIN_NAME}"
@@ -26,7 +25,6 @@ export FREE_PLAN_PRICE=0
 export PRO_PLAN_PRICE=15
 export FREE_PLAN_ARCHIVE=7
 export PRO_PLAN_ARCHIVE=30
-
 echo $COOKIE_DOMAIN
 echo "Docker Compose Commad: " $@
 docker-compose -f docker-compose.yml -f test-compose.yml $@
