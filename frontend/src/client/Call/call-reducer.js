@@ -173,10 +173,13 @@ const call = (
         byId:  {...state.byId, [action.data._id]: action.data },
       });
     } else {
+      const byId = {[action.data._id]: action.data, ...state.byId};
+      const allIds = [...state.allIds, action.data._id];
+      allIds.sort((a, b) => (byId[a].time < byId[b].time) ? 1 : -1);
       return Object.assign({}, state, {
         newestCallTime: new Date(action.data.time),
-        byId:  {[action.data._id]: action.data, ...state.byId},
-        allIds: [action.data._id, ...state.allIds]
+        byId,
+        allIds
       }); 
     }
 

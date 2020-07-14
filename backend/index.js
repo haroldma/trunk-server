@@ -179,7 +179,47 @@ app.get('/:shortName/call/:id', calls.get_call);
 app.get('/:shortName/calls/latest', calls.get_latest_calls);
 app.get('/:shortName/calls/next', calls.get_next_calls);
 app.get('/:shortName/calls/newer', calls.get_newer_calls);
-app.get('/:shortName/calls/older', calls.get_older_calls);
+app.get('/:shortName/calls/older', function(req,res) {
+  
+try {
+  notify_clients( {
+    "_id": Math.floor((Math.random() * 1000) + 1).toString(),
+    "talkgroupNum":1616,
+    "url":"https://s3.us-west-1.wasabisys.com/openmhz-west/media/kcers1b-3312-1594348573.m4a",
+    "filename":"/kcers1b/2020/7/10/3312-1594348573.m4a?c=" + Math.floor((Math.random() * 10000) + 1),
+    "time":Date.now(),
+    "srcList":[
+       {
+          "_id":"5f07d43c7f26d125bfd64c62",
+          "pos":0.12,
+          "src":"47067"
+       },
+       {
+          "_id":"5f07d43c7f26d125bfd64c61",
+          "pos":2.37,
+          "src":"22547"
+       },
+       {
+          "_id":"5f07d43c7f26d125bfd64c60",
+          "pos":18.29,
+          "src":"64775"
+       }
+    ],
+    "star":0,
+    "len":28,
+    "shortName": "kcers1b"
+ });
+}
+catch(e) {
+  
+  res.contentType('json');
+  res.send(JSON.stringify(e.message));
+}
+
+
+ 
+ calls.get_older_calls(req, res);
+});
 app.get('/:shortName/calls/:time/older', calls.get_iphone_calls);
 app.get('/:shortName/calls', calls.get_calls);
 app.post('/:shortName/star/:id', calls.add_star, function(req,res) {

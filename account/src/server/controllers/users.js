@@ -86,14 +86,7 @@ exports.login = function(req, res, next) {
           message: loginErr
         });
       }
-      if (!user.confirmEmail) {
-        req.logout();
-        return res.json({
-          success: false,
-          message: "unconfirmed email",
-          userId: user.id
-        });
-      }
+   
       console.log(user);
       // go ahead and create the new user
       var clientUser = (({
